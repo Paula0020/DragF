@@ -8,9 +8,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 #datos iniciales
 v_i=0#m/s
-h_i=100#m
+h_i=100#m (distancia de caida)
 g=9.81#m/s^2
-c=0.5
+c=0.5# coeficiente de arrastre
 p=1.15
 #fuerza de retardo
 #W=1/2*c*p*A*v^2
@@ -40,13 +40,13 @@ def lanzamiento(nombre,masa,radio):
     v=(2*g/S)*(np.exp(S*T)-1)/(np.exp(S*T)+1)
     y=(2*g/S)*(2/S*np.log((np.exp(S*T)+1)/2)-T)
     ##obtener donde se hace 0 la distancia(ya ha caido los 100m)
-    index=np.where(y >100)
+    index=np.where(y >h_i)
     #RealX elimina los valores después despues de los 100m de caida
     RealT = np.delete(T,index)
     RealV = np.delete(v, index)
     Realy= np.delete(y, index)
     tiempoA(nombre,S,RealV, index)
-    ax1.plot(RealT,-1*(Realy-100), label=nombre)
+    ax1.plot(RealT,-1*(Realy-h_i), label=nombre)
     ax1.legend()
     ax1.set_title("Tiempo vs Altura")
     ax1.set_xlabel("Tiempo(S)")
@@ -58,12 +58,14 @@ def lanzamiento(nombre,masa,radio):
     ax3.set_ylabel("velocidad (m/S)")
     
     
-##cambiar el indeX
+#nombre, masa(kg), radio(m)
+    """
 lanzamiento("baseball",0.145,0.0366)
 lanzamiento("ping-pong",0.0024,0.019)
 lanzamiento("gota p",1e-5,0.003)
 lanzamiento("gota g",0.004,0.002)
-
+"""
+lanzamiento("Pelota de poliestireno",0.00862,0.033)
 plt.show()
     
     
