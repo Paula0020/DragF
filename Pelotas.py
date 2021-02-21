@@ -14,7 +14,7 @@ c=0.5# coeficiente de arrastre
 p=1.15
 #fuerza de retardo
 #W=1/2*c*p*A*v^2
-T=np.linspace(0,10,num=1000)
+T=np.linspace(0,20,num=100)
 
 #Valor de S que se relaciona con la fuerza de arrastre
 #S^2=2cpA2g/m
@@ -57,15 +57,13 @@ def lanzamiento(nombre,masa,radio):
     ax3.set_xlabel("Tiempo(S)")
     ax3.set_ylabel("velocidad (m/S)")
     
-    
 #nombre, masa(kg), radio(m)
-    """
 lanzamiento("baseball",0.145,0.0366)
 lanzamiento("ping-pong",0.0024,0.019)
-lanzamiento("gota p",1e-5,0.003)
-lanzamiento("gota g",0.004,0.002)
-"""
-lanzamiento("Pelota de poliestireno",0.00862,0.033)
+lanzamiento("gota 1",1e-8,0.003)
+lanzamiento("gota 2",1e-8,0.002)
+lanzamiento("gota 3",1e-8,0.004)
+
 plt.show()
     
     
